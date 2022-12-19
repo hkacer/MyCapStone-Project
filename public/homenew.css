@@ -1,0 +1,50 @@
+
+.container-president {
+  display: flex;
+  justify-content: center;
+}
+
+.card-pres {
+  width: 300px;
+  padding:20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  border-radius: 20px;
+  background:#e3e3e3 ;
+  box-shadow: 5px 5px 5px #819da4,-5px -5px 32px #abeaed;
+
+}
+
+.card img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 0px;
+}
+
+.card h2 {
+  margin: 0;
+}
+
+.card .rating {
+  display: flex;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.card .rating span {
+  cursor: pointer;
+}
+
+.card .rating span:hover,
+.card .rating span:hover ~ span {
+  color: #ffc107;
+}
+
+.card p {
+  margin: 10px 0;
+}

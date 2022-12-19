@@ -1,0 +1,99 @@
+body {
+  font-family: sans-serif;
+   background-color: rgb(189, 227, 241);
+    color: rgb(33, 2, 2);
+  
+}
+
+h1, h2, h3 {
+  text-align: center;
+  margin: 20px 0;
+  color: rgb(171, 3, 3);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  color: rgb(5, 5, 157);
+  font-size: large;
+  font-weight: 600;
+
+}
+.navigation{
+  display: relative;
+  text-align: center;
+  align-items: center;
+  justify-items: stretch;
+  justify-content: space-between;
+  
+  width: 35%;
+  height: 80px;
+}
+.presidents-slideshow {
+  display: absolute;
+  width: 35%;
+  height: 80px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.presidents-slideshow img {
+ position:static;
+  top: 0;
+  left: 0px;
+  width: 20%;
+  height: 100%;
+
+  transition: all 20s;
+  animation: slide 5s infinite
+  ;
+}
+
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+    /* CSS styles for the login form */
+    .login-form {
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    .login-form input[type="submit"] {
+      background-color: #ed0814;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    .login-form input[type="submit"]:hover {
+      opacity: 0.8;
+    }
+    .login-form .continue-as-guest {
+      text-align: center;
+      margin-top: 16px;
+    }
+    .login-form .continue-as-guest a {
+      color: #ac394a;
+      text-decoration: none;
+    }
+  

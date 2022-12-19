@@ -1,0 +1,99 @@
+
+body {
+  background-color: rgb(139, 215, 250);
+  color: red;
+}
+p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: large;
+  font-weight: 800;
+}
+.header {
+  text-align: center;
+}
+.presidents-slideshow {
+  position: relative;
+  width: 40%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.presidents-slideshow img {
+ 
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  object-fit: cover;
+  animation: slide 5s infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.percentage-bar {
+  position: relative;
+  height: 1em;
+  border: 1px solid #333;
+}
+
+.percentage-bar .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #0072C6;
+  animation: slide 5s infinite;
+}
+
+.percentage-bar .label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 0.5em;
+  line-height: 1em;
+  font-weight: bold;
+  text-align: right;
+}
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+.box {
+  width: 45%;
+  padding: 20px;
+} 
+
+.box h3 {
+  margin: 0;
+}
+
+.box p {
+  margin: 0;
+}
+
+
+nav {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: large;
+  font-weight: 800;
+  flex-direction: row;
+}

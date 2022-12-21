@@ -13,6 +13,13 @@
 --   FOREIGN KEY (successor) REFERENCES presidents(id)
 -- );
 
+CREATE TABLE comments(
+       commentsId SERIAL PRIMARY KEY,
+       firstName VARCHAR(20) NOT NULL,
+       presidentsId REFERENCES presidents(id),
+       comment TEXT NOT NULL
+       
+);
  CREATE TABLE presidents (
         id INTEGER PRIMARY KEY,
         name TEXT NOT NULL,

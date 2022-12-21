@@ -5,7 +5,7 @@ const path=require('path')
 const cors=require('cors')
 const {SERVER_PORT} = process.env
 
-const {getPresidentsSecond, createPresidentDropDown,deletePresident}=require('./controllerSecond.js')
+const {getPresidentsSecond,deletePresident,createPresidentComment}=require('./controllerSecond.js')
 const {seed, getPresidents} = require('./controller.js')
 
 
@@ -17,8 +17,9 @@ app.use(cors())
 //app.post('/seed', seed)
 app.get('/presidents', getPresidents)
 app.get('/presidentsSecond',getPresidentsSecond)
-app.get('/presidentsSecond',createPresidentDropDown)
+//app.get('/presidentsSecond',createPresidentDropDown)
 app.delete('/presidentsSecond/:id', deletePresident)
+app.post('/presidents/:id/comments', createPresidentComment);
 
 
 

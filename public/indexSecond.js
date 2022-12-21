@@ -1,11 +1,11 @@
 
 const form = document.querySelector('form')
 const seAll=document.getElementById('see-all')
-const nameInput = document.querySelector('#name-input')
-const countrySelect = document.querySelector('#president-select')
-const countryList = document.querySelector('#presidents-list')
+const nameInput = document.querySelector('#presidents-name')
+const presidentComment=document.getElementById('president-comment')
 const seePres=document.getElementById('all-pres')
 const presContainer = document.querySelector('#pres-container')
+const userName= document.getElementById('user-name')
 
 
 
@@ -58,6 +58,40 @@ function deletePresident(id) {
       .then(() => getPresidentsSecond())
       .catch(err => console.log(err))
 }
+function handleSubmit(e) {
+  e.preventDefault()
+
+  if (nameInput.value < 1) {
+      alert ('You must enter your reasoning')
+      return
+  }
+  if(userName.value.length<=0){
+    alert('Please enter your name!!!')
+  }
+
+  let userRating = document.querySelector('input[name="rating"]:checked').value
+  let body = {
+      presidentsId : nameInput.value, 
+      userName: userName.value,
+      
+      rating: +userRating, 
+      comment: presidentComment.value
+      
+  }
+
+  axios.post(`http://localhost:4004/presidents/${nameInput.value}/comments`, body)
+      .then((res) => {
+          nameInput.value = ''
+          document.querySelector('#rating-one').checked = true
+          getPresidentsSecond()
+          if(res.status==200){
+            alert('Your comment is saved!')
+          }else{
+            alert('There was a problem try again later!!!')
+          }
+          
+      })
+}
 
 // function createDesiredPresident(pres){
 //   const presCard = document.createElement('div')
@@ -84,3 +118,4 @@ function deletePresident(id) {
 // }
 createPresidentDropDown()
 getPresidentsSecond()
+form.addEventListener('submit', handleSubmit)

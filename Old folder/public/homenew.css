@@ -26,25 +26,26 @@
   margin-bottom: 0px;
 }
 
-.card h2 {
+.card-pres h2 {
   margin: 0;
 }
 
-.card .rating {
+.card-pres .rating {
   display: flex;
   font-size: 24px;
   color: #ccc;
 }
 
-.card .rating span {
+.card-pres .rating span {
   cursor: pointer;
 }
 
-.card .rating span:hover,
-.card .rating span:hover ~ span {
+.card-pres .rating span:hover,
+.card-pres .rating span:hover ~ span {
   color: #ffc107;
 }
 
-.card p {
+.card-pres p {
   margin: 10px 0;
 }
+

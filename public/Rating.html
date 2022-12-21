@@ -10,16 +10,16 @@
 <h3>Welcome to The Future </h3>
       <ul>
          
-          <li class="crumb"> <a href="./Rating.html">Rating</a></li>
           <li class="crumb"> <a href="./index.html">Home</a></li>
-          
+          <li class="crumb"> <a href="./Rating.html">Rating</a></li>
+
           </ul>
 <body>
   <body>
+    
     <h1 id="title">My  Presidents</h1>
-    <p>Click the See All button to see All Presidents!!</p>
+   
 
-    <button id="see-all">See All Presidents</button>
     <div id="all-pres">
      
     </div>
@@ -27,18 +27,20 @@
     <main>
     <aside>
       <form>
-        <input 
+        <h2>Add an Entry</h2>
+        <!-- <input 
             type='text'
             id="title"
-            placeholder="Who is your favorite President?"/>
+            placeholder="Who is your favorite President?"/> -->
+            <label for="presidents-name">Who is your favorite President? </label>
+            <select id="presidents-name" name="presidents-name" ></select>
         <input 
             type='text'
             id="img"
             placeholder='Write a comment about why You think he is the best one!!'/>
-      <h2>Add an Entry</h2>
 
       <form>
-
+       
           <h4>Rating</h4>
           <div class="radio">
               <label for="rating-one">1:</label>
@@ -68,11 +70,11 @@
           <button>Add</button>
       </form>
     </aside>
-    <section id="pres-container"></section>
+    <section id="pres-container2"></section>
 
-    <section id="presidents-list"></section>
+    <section id="presidents2-list"></section>
   </main>
   <script src="../node_modules/axios/dist/axios.min.js"></script>
-  <script src="index.js"></script>
+  <script src="indexSecond.js"></script>
 </body>
 </html>

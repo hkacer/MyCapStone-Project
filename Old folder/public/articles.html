@@ -4,21 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Election Results</title>
+  <title>Articles</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" type="text/css" href="election.css">
-</head>
-<body>
-  <header>
-    <div class="container">
-      <h3>Welcome to The Future </h3>
-      <ul>
-        <li class="crumb"> <a href="./home.html">Home</a></li>
-          <li class="crumb"> <a href="./elections.html">Elections</a></li>
+  <link rel="stylesheet" href="articles.css">
+  <body>
+    <header>
+      <div class="container">
+        <h3>Welcome to The Future </h3>
+        <ul>
+          <li class="crumb"> <a href="./home.html">Home</a></li>
           <li class="crumb"> <a href="./electionResults.html">Election Results</a></li>
           <li class="crumb"> <a href="./articles.html">Articles</a></li>
-      </ul>
-  </div>
+        </ul>
+    </div>
+    </header>
+    <h1>Election Articles</h1>
+  <form action="/search" method="get">
+    <label for="query">Enter a word that you eant to search in election articles:</label><br>
+    <input type="text" id="query" name="query" value=""><br>
+    <button type="submit">Search</button>
+  </form> 
   <article>
     <header>
       <h3>Who will change the future?</h3>
@@ -35,10 +40,9 @@
         <!-- Comments will be added here -->
       </div>
   </header>
-  <p></p>
-	<a href="./home.html"><< Back </a>
-	<p></p>
-  <script src="./electionResults.js" defer></script>
+    <p></p>
+    <a href="./home.html"><< Back </a>
+    <p></p>
 </body>
 </html>
 

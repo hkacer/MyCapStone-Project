@@ -4,75 +4,59 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Reps</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="electionInfo.css">
 </head>
-<h3>Welcome to The Future </h3>
-      <ul>
-         
-          <li class="crumb"> <a href="./Rating.html">Rating</a></li>
-          <li class="crumb"> <a href="./index.html">Home</a></li>
-          
-          </ul>
+<nav>
+  <ul>
+    <li class="crumb"><a href="login.html">Login</a></li>
+    <li class="crumb"><a href="index.html">Home</a></li>
+    <li class="crumb"><a href="Rating.html">Ratings</a></li>
+  </ul>
+</nav>
 <body>
-  <body>
-    <h1 id="title">My  Presidents</h1>
-    <p>Click the See All button to see All Presidents!!</p>
+  <div class="card">
+    <h2>Presidents</h2>
+    <p class="description">The President of the United States is elected every four years. The current President is Joe Biden, who was inaugurated on January 20, 2021. The next presidential election is scheduled for November 3, 2024.</p>
+    <p class="more" >In addition to being the head of state and head of government, the President is also the commander-in-chief of the armed forces and has the power to make treaties and nominate federal judges. The President is elected through an electoral college system, where each state is allocated a certain number of electors based on its population. To be elected President, a candidate must receive a majority of the electoral votes.</p>
+  </div>
+  
+  <div class="card">
+    <h2>Senators</h2>
+    <p class="description">Senators are elected to six-year terms, with elections occurring every two years for one-third of the Senate. The current Senate consists of 50 Democrats and 50 Republicans. The next Senate elections will be held on November 8, 2022.</p>
+    <p class="more" >Senators represent the interests of their respective states in the federal government and have the power to approve or reject presidential nominations, propose and vote on legislation, and conduct investigations. There are two senators from each state, regardless of the state's population.</p>
+  </div>
+  
+  <div class="card">
+    <h2>Governors</h2>
+    <p class="description">Governors are elected to four-year terms, with elections occurring every four years. The current governor of each state can be found on the <a href="https://www.usa.gov/state-governors">USA.gov website</a>. The next gubernatorial elections will be held on November 6, 2018 in 36 states and two territories.</p>
+    <p class="more">Governors are the chief executive of their respective states and have the power to veto or sign bills into law, nominate judges, and manage the budget and administration of their state. They also serve as the commander-in-chief of their state's National Guard units.</p>
+  </div>
+  
+  <div class="card">
+    <h2>Fun Facts</h2>
+    <ul>
+      <li>The United States Constitution does not specify a minimum age for presidential candidates, but the 22nd Amendment sets the maximum age at 70 years old.</li>
+      <li>The United States is one of the few countries in the world that holds presidential elections on a fixed date (the first Tuesday after the first Monday in November).</li>
+      <li>The first presidential election was held on Thursday, November 2, 1788. George Washington was elected as the first President of the United States, and he was inaugurated on April 30, 1789.</li>
+      <li>The United States has a two-party system, with the Democratic Party and the Republican Party being the two major political parties.</li>
+    </ul>
+  </div>
+  
+  <script>
+ const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const more = card.querySelector('.more');
+    if (more.style.display === 'block') {
+      more.style.display = 'none';
+    } else {
+      more.style.display = 'block';
+    }
+  });
+});
+  
+  </script>
 
-    <button id="see-all">See All Presidents</button>
-    <div id="all-pres">
-     
-    </div>
-
-    <main>
-    <aside>
-      <form>
-        <input 
-            type='text'
-            id="title"
-            placeholder="Who is your favorite President?"/>
-        <input 
-            type='text'
-            id="img"
-            placeholder='Write a comment about why You think he is the best one!!'/>
-      <h2>Add an Entry</h2>
-
-      <form>
-
-          <h4>Rating</h4>
-          <div class="radio">
-              <label for="rating-one">1:</label>
-              <input type="radio" name="rating" value="1" id="rating-one" checked="true"/>
-          </div>
-
-          <div class="radio">
-              <label for="rating-two">2:</label>
-              <input type="radio" name="rating" value="2" id="rating-two"/>
-          </div>
-
-          <div class="radio">
-              <label for="rating-three">3:</label>
-              <input type="radio" name="rating" value="3" id="rating-three"/>
-          </div>
-
-          <div class="radio">
-              <label for="rating-four">4:</label>
-              <input type="radio" name="rating" value="4" id="rating-four"/>
-          </div>
-
-          <div class="radio">
-              <label for="rating-five">5:</label>
-              <input type="radio" name="rating" value="5" id="rating-five"/>
-          </div>
-          
-          <button>Add</button>
-      </form>
-    </aside>
-    <section id="pres-container"></section>
-
-    <section id="presidents-list"></section>
-  </main>
-  <script src="../node_modules/axios/dist/axios.min.js"></script>
-  <script src="index.js"></script>
 </body>
 </html>

@@ -7,40 +7,36 @@
   <title>My Reps</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<h3>Welcome to The Future </h3>
-      <ul>
-         
-          <li class="crumb"> <a href="./index.html">Home</a></li>
-          <li class="crumb"> <a href="./Rating.html">Rating</a></li>
 
-          </ul>
+<nav>
+  <ul>
+    <li class="crumb"><a href="login.html">Login</a></li>
+    <li class="crumb"><a href="index.html">Home</a></li>
+    <li class="crumb"><a href="Rating.html">Ratings</a></li>
+  </ul>
+</nav>
 <body>
   <body>
     
-    <h1 id="title">My  Presidents</h1>
-   
-
-    <div id="all-pres">
-     
-    </div>
+  
 
     <main>
     <aside>
       <form>
-        <h2>Add an Entry</h2>
+        <h2>Contribute to our poll</h2>
         <!-- <input 
             type='text'
             id="title"
             placeholder="Who is your favorite President?"/> -->
             <label for="user-name">Your Name</label>
             <input type="text" id="user-name">
-            <label id="name-input" for="presidents-name">Who is your favorite President? </label>
+            <label id="name-input" for="presidents-name">Add the name of President you want to Rate? </label>
             <select id="presidents-name" name="presidents-name" ></select>
         <input 
         name="presidents-comment"
             type='text'
             id="president-comment"
-            placeholder='Write a comment about why You think he is the best one!!'/>
+            placeholder='Write a comment!!'/>
 
       <form>
        
@@ -48,30 +44,24 @@
           <div class="radio">
               <label for="rating-one">1:</label>
               <input type="radio" name="rating" value="1" id="rating-one" checked="true"/>
-          </div>
-
-          <div class="radio">
               <label for="rating-two">2:</label>
               <input type="radio" name="rating" value="2" id="rating-two"/>
-          </div>
-
-          <div class="radio">
               <label for="rating-three">3:</label>
               <input type="radio" name="rating" value="3" id="rating-three"/>
-          </div>
-
-          <div class="radio">
               <label for="rating-four">4:</label>
               <input type="radio" name="rating" value="4" id="rating-four"/>
-          </div>
-
-          <div class="radio">
               <label for="rating-five">5:</label>
               <input type="radio" name="rating" value="5" id="rating-five"/>
           </div>
           
-          <button>Add</button>
+          <button>Submit</button>
       </form>
+      <h1 id="title">Presidents</h1>
+   
+
+      <div id="all-pres">
+       
+      </div>
     </aside>
     <section id="pres-container2"></section>
 

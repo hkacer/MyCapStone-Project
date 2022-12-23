@@ -61,15 +61,12 @@ function deletePresident(id) {
 function handleSubmit(e) {
   e.preventDefault()
 
-  if (nameInput.value < 1) {
-      alert ('You must enter your reasoning')
-      return
-  }
-  if(userName.value.length<=0){
-    alert('Please enter your name!!!')
-  }
-
-  let userRating = document.querySelector('input[name="rating"]:checked').value
+  if (presidentComment.value.length <=0 || userName.value.length<=0) {
+    
+      alert ('Please fill out the required field')
+    
+  }else {
+    let userRating = document.querySelector('input[name="rating"]:checked').value
   let body = {
       presidentsId : nameInput.value, 
       userName: userName.value,
@@ -83,14 +80,19 @@ function handleSubmit(e) {
       .then((res) => {
           nameInput.value = ''
           document.querySelector('#rating-one').checked = true
-          getPresidentsSecond()
+          //getPresidentsSecond()
           if(res.status==200){
             alert('Your comment is saved!')
           }else{
             alert('There was a problem try again later!!!')
           }
+          window.location.href='Rating.html';
           
       })
+
+  }
+ 
+  
 }
 
 // function createDesiredPresident(pres){

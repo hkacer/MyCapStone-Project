@@ -1,4 +1,4 @@
-console.log("connected")
+console.log("connected");
 
 //const searchForm= document.getElementById('search-form');
 const searchInput=document.getElementById('search-input');
@@ -90,7 +90,7 @@ const login =(body)=>
     const password = document.querySelector("#floatingPassword");
 
     modalTitle.textContent=button.textContent;
-    modalTitle.textContent.trim()==="Login"?(optionalMsg.style.display="none") : (optionalMsg.style.display="block");
+    modalTitle.textContent.trim()==="Login"?(optionalMsg.style.display="Please wait!") : (optionalMsg.style.display="Thank you for being part of our growing family");
     authSubmit.textContent=button.textContent;
     authSubmit.addEventListener("click",(e)=>{
         e.preventDefault();

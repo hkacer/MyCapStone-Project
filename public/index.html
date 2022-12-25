@@ -7,30 +7,52 @@
   <title>Document</title>
   <link rel="stylesheet" href="electionInfo.css">
 </head>
-<nav>
-  <ul>
-    <li class="crumb"><a href="login.html">Login</a></li>
-    <li class="crumb"><a href="index.html">Home</a></li>
-    <li class="crumb"><a href="Rating.html">Ratings</a></li>
-  </ul>
-</nav>
+
+<button id="modalButton">Click to see more</button>
+
+<!-- Modal content -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Click where you want to go!</h2>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li class="crumb"><a href="login.html">Login</a></li>
+        <li class="crumb"><a href="index.html">Home</a></li>
+        <li class="crumb"><a href="Rating.html">Ratings</a></li>
+      </ul>
+      <p>Make a difference in someonelse life!</p>
+    </div>
+    <div class="modal-footer">
+      <h3>What do you want to accomplish?</h3>
+    </div>
+  </div>
+</div>
+  
 <body>
   <div class="card">
     <h2>Presidents</h2>
     <p class="description">The President of the United States is elected every four years. The current President is Joe Biden, who was inaugurated on January 20, 2021. The next presidential election is scheduled for November 3, 2024.</p>
-    <p class="more" >In addition to being the head of state and head of government, the President is also the commander-in-chief of the armed forces and has the power to make treaties and nominate federal judges. The President is elected through an electoral college system, where each state is allocated a certain number of electors based on its population. To be elected President, a candidate must receive a majority of the electoral votes.</p>
+    <p class="more" >In addition to being the head of state and head of government, the President is also the commander-in-chief of the armed forces and has the power to make treaties and nominate federal judges. The President is elected through an electoral college system, where each state is allocated a certain number of electors based on its population. To be elected President, a candidate must receive a majority of the electoral votes.
+      <a href="Rating.html">Rate your Presidents here!!!</a>
+
+    </p>
   </div>
   
   <div class="card">
     <h2>Senators</h2>
     <p class="description">Senators are elected to six-year terms, with elections occurring every two years for one-third of the Senate. The current Senate consists of 50 Democrats and 50 Republicans. The next Senate elections will be held on November 8, 2022.</p>
     <p class="more" >Senators represent the interests of their respective states in the federal government and have the power to approve or reject presidential nominations, propose and vote on legislation, and conduct investigations. There are two senators from each state, regardless of the state's population.</p>
+    <a href="./futurePlans/senators.html" >Vote for your Senator!!!</a>
   </div>
   
   <div class="card">
     <h2>Governors</h2>
     <p class="description">Governors are elected to four-year terms, with elections occurring every four years. The current governor of each state can be found on the <a href="https://www.usa.gov/state-governors">USA.gov website</a>. The next gubernatorial elections will be held on November 6, 2018 in 36 states and two territories.</p>
     <p class="more">Governors are the chief executive of their respective states and have the power to veto or sign bills into law, nominate judges, and manage the budget and administration of their state. They also serve as the commander-in-chief of their state's National Guard units.</p>
+    <a href="./futurePlans/governers.html" >Vote for your Governer!!!</a>
   </div>
   
   <div class="card">
@@ -55,8 +77,9 @@ cards.forEach(card => {
     }
   });
 });
-  
   </script>
+  <script src="../node_modules/axios/dist/axios.min.js"></script>
+  <script src="indexSecond.js"></script>
 
 </body>
 </html>

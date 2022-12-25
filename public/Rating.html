@@ -6,18 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Reps</title>
   <link rel="stylesheet" href="styles.css">
+  
 </head>
 
-<nav>
-  <ul>
-    <li class="crumb"><a href="login.html">Login</a></li>
-    <li class="crumb"><a href="index.html">Home</a></li>
-    <li class="crumb"><a href="Rating.html">Ratings</a></li>
-  </ul>
-</nav>
 <body>
   <body>
-    
+    <button id="modalButton">Click to see more</button>
+
+<!-- Modal content -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Click where you want to go!</h2>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li class="crumb"><a href="login.html">Login</a></li>
+        <li class="crumb"><a href="index.html">Home</a></li>
+        <li class="crumb"><a href="Rating.html">Ratings</a></li>
+      </ul>
+      <p>Make a difference in someonelse life!</p>
+    </div>
+    <div class="modal-footer">
+      <h3>What do you want to accomplish?</h3>
+    </div>
+  </div>
+</div>
   
 
     <main>
@@ -54,8 +69,10 @@
               <input type="radio" name="rating" value="5" id="rating-five"/>
           </div>
           
-          <button>Submit</button>
+          <button id="submitBtn">Submit</button>
+          
       </form>
+
       <h1 id="title">Presidents</h1>
    
 

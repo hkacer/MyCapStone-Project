@@ -42,7 +42,7 @@ app.post('/api/signUp',userSignup)
 //seed endpoint
 //app.post('/seed',seed)
 
-//app.post('/api/list',addVote)
+app.post('/api/list',addVote)
 
 
 

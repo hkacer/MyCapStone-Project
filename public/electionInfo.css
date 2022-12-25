@@ -41,12 +41,12 @@ nav ul li a:hover {
 h2 {
   font-size: 18px;
   font-weight: bold;
-  margin-top: 0;
-  color: blue;
+  margin-top: 10px;
+  color: rgb(14, 14, 15);
 }
 
 p, li {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
   color: gray;
 }
@@ -54,4 +54,91 @@ p, li {
 ul {
   list-style: none;
   padding: 0;
+}
+/* Style the modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Style the modal content */
+.modal-content {
+  position: relative;
+  background-color: #b9f9f7;
+  margin: auto;
+  padding: 10;
+  border: 1px solid #888;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(65, 55, 55, 0.2),0 6px 20px 0 rgba(15, 14, 14, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Style the modal header */
+/* Style the modal header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: #efb6f0;
+  color: rgb(1, 13, 20);
+}
+
+/* Style the modal body */
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Style the modal footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #fab7ef;
+  color: rgb(15, 14, 14);
+}
+
+/* Style the close button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+#modalButton{
+  background-color: #93f0f3;
+  width: 100px;
+  height: 40px;
+  color: rgb(10, 1, 20);
+  border: none;
+  margin: 5px;
+}
+#modalButton:hover {
+  color: rgb(251, 249, 251);
+  background-color: rgb(246, 65, 125);
+  flex-wrap: wrap;
 }

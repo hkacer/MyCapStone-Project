@@ -6,7 +6,7 @@ const presidentComment=document.getElementById('president-comment')
 const seePres=document.getElementById('all-pres')
 const presContainer = document.querySelector('#pres-container')
 const userName= document.getElementById('user-name')
-
+const seeAllComments=document.getElementById('see-all-comments')
 
 
 
@@ -64,6 +64,32 @@ function getPresidentsSecond() {
       })
 }
 
+function getAllComments(){
+  axios.get('http://localhost:4004/allComments')
+  .then(res => {
+      res.data.forEach(comments => {
+          const allComments = document.createElement('option')
+          allComments.setAttribute('value', comments['id'])
+          //console.log(presidents)
+          
+          const info=`<h1></h1>
+          <div class="comments-card">
+         <h3>Your comment is here...</h3>
+         <p>Name: ${comments.firstname}</p>
+        <p>President's Id: ${comments.presidentsid}</p>
+        <p>Comment: ${comments.comment}</p>
+        <p>Rating: ${comments.rating}</p>
+       </div>
+       <button onclick="deleteComments(${comments.commentsid})">Delete</button>
+      `
+      seeAllComments.innerHTML+=info
+
+          
+      })
+  })
+}
+
+
 function createPresidentDropDown(){
 
   const selectTag=document.getElementById('presidents-name')
@@ -80,11 +106,17 @@ function createPresidentDropDown(){
       })
 }
 
-function deletePresident(id) {
-  axios.delete(`http://localhost:4004/presidentsSecond/${id}`)
-      .then(() => getPresidentsSecond())
-      .catch(err => console.log(err))
+function deleteComments(id) {
+  axios.delete(`http://localhost:4004/allComments/${id}`)
+      .then(() => getAllComments())
+      
+      .catch(err => console.log('err here delete'))
+
+      window.location.href = 'Rating.html'
 }
+
+
+
 function handleSubmit(e) {
   e.preventDefault()
 
@@ -94,10 +126,12 @@ function handleSubmit(e) {
     
   }else {
     let userRating = document.querySelector('input[name="rating"]:checked').value
+   
+
+
   let body = {
       presidentsId : nameInput.value, 
       userName: userName.value,
-      
       rating: +userRating, 
       comment: presidentComment.value
       
@@ -113,38 +147,24 @@ function handleSubmit(e) {
           }else{
             alert('There was a problem try again later!!!')
           }
-          window.location.href='Rating.html';
+
+          const commentElement = document.createElement('div');
+        commentElement.innerText = presidentComment.value;
+        document.body.appendChild(commentElement);
+          presidentComment.innerHTML+= commentElement
+          console.log(commentElement)
+        window.location.href = 'Rating.html';
+      });
           
-      })
+      
 
   }
  
   
 }
 
-// function createDesiredPresident(pres){
-//   const presCard = document.createElement('div')
-//     presCard.classList.add('pres-card')
-
-//     presCard.innerHTML = `<img alt='pres cover' src=${pres.imageURL} class="pres-cover"/>
-//     <p class="pres-title">${pres.title}</p>
-//     <div class="btns-container">
-//         <button onclick="updatePresident(${pres.id}, 'minus')">-</button>
-//         <p class="movie-rating">${pres.rating} stars</p>
-//         <button onclick="updatePresident(${pres.id}, 'plus')">+</button>
-//     </div>
-//     <button onclick="deleteMovie(${pres.id})">delete</button>
-//     `
-
-
-//     presContainer.appendChild(presCard)
-// }
-// function displayPresidents(arr) {
-//   presContainer.innerHTML = ``
-//   for (let i = 0; i < arr.length; i++) {
-//       createDesiredPresident(arr[i])
-//   }
-// }
+getAllComments()
 createPresidentDropDown()
 getPresidentsSecond()
+
 form.addEventListener('submit', handleSubmit)

@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors())
 
 
-const {getPresidentsSecond,deletePresident,createPresidentComment}=require('./controllerSecond.js')
+const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments}=require('./controllerSecond.js')
 const {seed1, getPresidents} = require('./controller.js')
 
 app.use(express.static('public'))
@@ -19,14 +19,15 @@ const { userLogin, userSignup} = require('./controllers/authController')
 const { seed } = require('./controllers/db/seed.db.controller.js')
 
 
-
 app.post('/seed', seed1)
+app.get('/allComments',getAllComments)
 app.get('/presidents', getPresidents)
 app.get('/presidentsSecond',getPresidentsSecond)
 //app.get('/presidentsSecond',createPresidentDropDown)
-app.delete('/presidentsSecond/:id', deletePresident)
+app.delete('/allComments/:id', deleteComments)
 app.post('/presidents/:id/comments', createPresidentComment);
 //app.post('http://localhost:4004/signin',getUserInfo)
+
 app.get('/',(req,res)=> {
   res.sendFile(path.join(__dirname,'../public/index.html'))
 })

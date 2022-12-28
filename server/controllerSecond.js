@@ -44,6 +44,17 @@ module.exports = {
     })
     .catch(err => console.log('error seeding DB', err))
 },
+getAllComments:(req,res)=>{
+  sequelize.query(`
+  SELECT * FROM comments
+  `)
+  .then(dbRes=>{
+    console.log(dbRes[0])  
+    res.status(200).send(dbRes[0])
+
+  })
+  .catch(err => console.log('error in commnets', err))
+},
 createPresidentDropDown:(req,res)=>{
   sequelize.query(`
     SELECT * FROM presidents
@@ -55,14 +66,16 @@ createPresidentDropDown:(req,res)=>{
     })
     .catch(err => console.log('error seeding DB', err))
 },
-deletePresident:(req,res)=>{
+
+deleteComments:(req,res)=>{
   const {id}=req.params
+  console.log(id)
   sequelize.query(`
-  DELETE FROM presidents 
-  WHERE ${id}=presidents.id
+  DELETE FROM comments 
+  WHERE commentsid=${id}
   
-  `).then(dbRes=>res.status(200).send(dbRes[0]))
-  .catch(err=>console.log('Err is here forth'))
+  `).then(()=>this.getAllComments())
+  .catch(err=>console.log('Err is here delete'))
 },
 
 createPresidents:(req,res)=>{
@@ -82,7 +95,7 @@ createPresidentComment:(req,res)=>{
   VALUES('${userName}', ${rating}, '${comment}', ${presidentId})
   `)
   .then(dbRes=>res.status(200).send(dbRes[0]))
-  .catch(err=>console.log('Err is here second'))
+  .catch(err=>console.log('Err is here third',err))
   console.log(presidentId,userName,rating,comment)
 }
 }

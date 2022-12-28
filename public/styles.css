@@ -37,13 +37,14 @@ header {
 
 main {
   display: flex; 
+  flex-direction: column;
   justify-content: center;
 }
 form {
-  width:350px;
+ 
   height: 350px;
   background-color: rgb(247, 188, 242);
-  position: relative;
+ 
   display: flex; 
   flex-direction: column;
   justify-content: space-between; 
@@ -125,6 +126,19 @@ input[type='text'] {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
+#see-all-comments{
+  
+overflow-x: hidden;
+border: 1px solid black;
+border-radius: 10px;
+padding: 10px;
+display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+
+}
 
 .pres-title {
   font-size: 18px;
@@ -201,8 +215,20 @@ h3:hover,h1:hover{
   color: rgb(251, 249, 251);
   background-color: rgb(246, 65, 125);
 }
+aside{
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+ 
+}
+#see-all-comments{
+  display: flex;
 
-/* Style the modal */
+  width: 200px;
+  flex-shrink: 1;
+  
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

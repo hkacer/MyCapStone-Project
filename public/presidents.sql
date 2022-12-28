@@ -13,13 +13,34 @@
 --   FOREIGN KEY (successor) REFERENCES presidents(id)
 -- );
 
+  CREATE TABLE ratings (
+        id INTEGER PRIMARY KEY,
+        president_id INTEGER NOT NULL,
+        rater_name TEXT NOT NULL,
+        rating INTEGER NOT NULL,
+        FOREIGN KEY (president_id) REFERENCES presidents(id)
+      );
+
+      create table vote_users(
+        vote_user_id serial primary key,
+        email varchar not null,
+        passhash varchar(500) not null 
+    );
+
+    SELECT ratings.*, presidents.name
+    FROM ratings
+    JOIN presidents ON ratings.president_id = presidents.id;
+
 CREATE TABLE comments(
        commentsId SERIAL PRIMARY KEY,
        firstName VARCHAR(20) NOT NULL,
-       presidentsId REFERENCES presidents(id),
-       comment TEXT NOT NULL
+       presidentsId INTEGER REFERENCES presidents(id),
+       comment TEXT NOT NULL,
+       rating INTEGER 
        
 );
+
+
  CREATE TABLE presidents (
         id INTEGER PRIMARY KEY,
         name TEXT NOT NULL,

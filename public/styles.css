@@ -50,7 +50,7 @@ form {
   justify-content: space-between; 
   align-items: center;
   margin:0px 250px;
-  
+  flex-wrap: wrap;
   margin-top: 50px;
   padding: 30px;
   border-radius: 20px;
@@ -122,22 +122,34 @@ input[type='text'] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 15px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 #see-all-comments{
-  
+  width: 100px;
+  height:390px;
 overflow-x: hidden;
-border: 1px solid black;
-border-radius: 10px;
+margin-right: 50px;
+border-radius: 20px;
 padding: 10px;
+margin-top: 50px;
 display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color:rgb(247, 188, 242);
+  flex-grow: 2;
+  
+
+
+}
+.comments-card{
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
-
-
+  flex-grow: 2;
 }
 
 .pres-title {
@@ -219,6 +231,12 @@ aside{
   width: 100%;
   display: flex;
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+
  
 }
 #see-all-comments{
@@ -226,6 +244,11 @@ aside{
 
   width: 200px;
   flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
   
 }
 

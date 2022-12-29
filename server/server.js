@@ -5,9 +5,12 @@ const path=require('path')
 const cors=require('cors')
 const {SERVER_PORT} = process.env
 
+const corsOptions = {
+  exposedHeaders: 'Authorization',
+};
 
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 
 const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments}=require('./controllerSecond.js')
@@ -17,8 +20,10 @@ app.use(express.static('public'))
 const { searchVote, addVote } = require ('./controllers/voteController')
 const { userLogin, userSignup} = require('./controllers/authController')
 const { seed } = require('./controllers/db/seed.db.controller.js')
+const { isAuthenticated } = require('./controllers/middleware/isAuthenticated')
 
-
+app.post('/api/list/:id',isAuthenticated)
+app.get('/api/list/:id', isAuthenticated)
 app.post('/seed', seed1)
 app.get('/allComments',getAllComments)
 app.get('/presidents', getPresidents)

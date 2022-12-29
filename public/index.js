@@ -5,59 +5,47 @@ const searchInput=document.getElementById('search-input');
 const displaySection=document.getElementById('display-section');
 const baseURL=`http://localhost:4004`;
 
-const addTolist= (voteObj)=>{
-    console.log(voteObj);
+const addToList = (pres) => {
+    console.log(pres);
+    let token = sessionStorage.getItem("token");
+    let userId = sessionStorage.getItem("userId");
+    token == null
+      ? alert("Please login to add your comment")
+      : axios
+          .post(`${baseURL}/api/list/${userId}`,pres, {
+            headers: {
+              authorization: token,
+            },
+          })
+          .then((res) => alert(res.data))
+          .catch((err) => console.log(err));
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const userInput = searchInput.value;
+    displaySection.innerHTML = "";
+    searchInput.value = ``;
     axios
-    .post(`${baseURL}/api/list`,{voteObj})
-    .then((res)=> alert(res.data))
-    .catch((err)=>console.log('first error'))
+      .get(`${baseURL}/api/query/?search=${userInput}`)
+      .then((res) => {
+        // console.log(res.data);
+        createCard(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  
 
-};
 
-const handleSearch=(e)=>{
-e.preventDefault();
-const userInput=searchInput.value;
-displaySection.innerHTML= "";
-searchInput.value=``;
-axios
-.get(`${baseURL}/api/query/?search=${userInput}`)
-.then((res)=>{
-    res.data.result.map((result)=>{
-        let displayDiv=document.createElement("div");
-        displayDiv.classList.add("card")
-        displayDiv.style.width="18rem";
-        let resultObj=JSON.stringify({...result}).replace(/[\/\(\)\']/g,
-        "&apos;");
-        displayDiv.innerHTML=`
-        <img src='https://image.tmdb.org/t/p/w500/${result.poster_path}'/>
-        <div class="card-body bg-light">
-        <h5 class="card-title">${result.title}</h5>
-        <p class="card-text overflow-hidden">${result.overview}</p>
-        <a href="#" onclick='addToList(${resultObj})' class="btn btn-primary">Add to list</a>
-        </div>
-        
-        `;
-        displaySection.appendChild(displayDiv)
-    });
-})
-.catch(err=>console.log(err))
 
-};
-
-const getTrending= ()=>{
-axios.get(`${baseURL}/api/trending`).then().catch();
-
-};
-
-const getPopular=()=>{
-    axios.get(`${baseURL}/api/popular`).then().catch()
-};
 const login =(body)=>
     axios
     .post(`${baseURL}/api/login`,body)
     .then((res)=>{
-        console.log('hit login');
-        sessionStorage.setItem("user",JSON.stringify(res.data));
+        console.log(res.data);
+      let token = res.data.token;
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("userId", res.data.vote_user_id);
         window.location.href='Rating.html';
     
     })
@@ -67,9 +55,13 @@ const login =(body)=>
     const signUp = (body)=>
         axios
         .post(`${baseURL}/api/signUp`,body)
-        .then((res)=>{
-            sessionStorage.setItem("user",JSON.stringify(res.data));
-            window.location.href='Rating.html';
+        .then(async (res) => {
+            // console.log("hit signup");
+            let token = await res.data.token;
+            console.log(res.data);
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("userId", res.data.vote_user_id);
+            //window.location.href='Rating.html';
         })
         .catch((err)=>console.log('third err'));
 
@@ -90,13 +82,17 @@ const login =(body)=>
     const password = document.querySelector("#floatingPassword");
 
     modalTitle.textContent=button.textContent;
-    modalTitle.textContent.trim()==="Login"?(optionalMsg.style.display="Please wait!") : (optionalMsg.style.display="Thank you for being part of our growing family");
-    authSubmit.textContent=button.textContent;
-    authSubmit.addEventListener("click",(e)=>{
-        e.preventDefault();
-        const body={email: email.value, password: password.value};
-        console.log(authSubmit.textContent);
-        authSubmit.textContent.trim()==="Login" ? handleAuth("Login",body) : handleAuth("SignUp", body);
+    modalTitle.textContent.trim() === "Login"
+    ? (optionalMsg.style.display = "none")
+    : (optionalMsg.style.display = "block");
+  authSubmit.textContent = button.textContent;
+  authSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const body = { email: email.value, password: password.value };
+    console.log(authSubmit.textContent);
+    authSubmit.textContent.trim() === "Login"
+      ? handleAuth("Login", body)
+      : handleAuth("SignUp", body);
     })
 
     })

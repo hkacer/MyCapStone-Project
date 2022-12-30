@@ -46,7 +46,9 @@ module.exports = {
 },
 getAllComments:(req,res)=>{
   sequelize.query(`
-  SELECT * FROM comments
+  SELECT presidents.name, comments.firstName, comments.commentsid, comments.comment, comments.rating
+FROM presidents
+JOIN comments ON presidents.id = comments.presidentsId;
   `)
   .then(dbRes=>{
     console.log(dbRes[0])  

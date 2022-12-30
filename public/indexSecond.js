@@ -76,12 +76,13 @@ function getAllComments(){
           <div class="comments-card">
          <h3>Your comment is here...</h3>
          <p>Name: ${comments.firstname}</p>
-        <p>President's Id: ${comments.presidentsid}</p>
+        <p>President's Name: ${comments.name}</p>
         <p>Comment: ${comments.comment}</p>
         <p>Rating: ${comments.rating}</p>
        </div>
        <button onclick="deleteComments(${comments.commentsid})">Delete</button>
       `
+   
       seeAllComments.innerHTML+=info
 
           
@@ -127,8 +128,6 @@ function handleSubmit(e) {
   }else {
     let userRating = document.querySelector('input[name="rating"]:checked').value
    
-
-
   let body = {
       presidentsId : nameInput.value, 
       userName: userName.value,

@@ -61,12 +61,17 @@ const login =(body)=>
             console.log(res.data);
             sessionStorage.setItem("token", token);
             sessionStorage.setItem("userId", res.data.vote_user_id);
-            //window.location.href='Rating.html';
+            window.location.href='Rating.html';
         })
         .catch((err)=>console.log('third err'));
 
     const handleAuth= (authType,body)=>{
+      if(body.email && body.password){
         authType==="SignUp" ? signUp(body) : login(body);
+      }else{
+        alert("Please fill required field")
+      }
+        
     }
     
     //searchForm.addEventListener("submit",handleSearch)

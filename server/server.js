@@ -4,6 +4,7 @@ const app = express()
 const path=require('path')
 const cors=require('cors')
 const {SERVER_PORT} = process.env
+const router = express.Router();
 
 const corsOptions = {
   exposedHeaders: 'Authorization',
@@ -13,8 +14,8 @@ app.use(express.json())
 app.use(cors(corsOptions))
 
 
-const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments}=require('./controllerSecond.js')
-const {seed1, getPresidents} = require('./controller.js')
+const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments,getUserProfile}=require('./controllerSecond.js')
+// const { getPresidents} = require('./controller.js')
 
 app.use(express.static('public'))
 const { searchVote, addVote } = require ('./controllers/voteController')
@@ -24,9 +25,10 @@ const { isAuthenticated } = require('./controllers/middleware/isAuthenticated')
 
 app.post('/api/list/:id',isAuthenticated)
 app.get('/api/list/:id', isAuthenticated)
-app.post('/seed', seed1)
+//app.post('/seed', seed)
 app.get('/allComments',getAllComments)
-app.get('/presidents', getPresidents)
+app.get('/profile',getUserProfile )
+// app.get('/presidents', getPresidents)
 app.get('/presidentsSecond',getPresidentsSecond)
 //app.get('/presidentsSecond',createPresidentDropDown)
 app.delete('/allComments/:id', deleteComments)

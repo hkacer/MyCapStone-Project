@@ -7,6 +7,7 @@ const seePres=document.getElementById('all-pres')
 const presContainer = document.querySelector('#pres-container')
 const userName= document.getElementById('user-name')
 const seeAllComments=document.getElementById('see-all-comments')
+const userComments=document.getElementById('profile')
 
 
 
@@ -63,6 +64,20 @@ function getPresidentsSecond() {
           })
       })
 }
+async function getUserProfile() {
+  // Send a request to the server to get the user's profile information
+  const res = await axios.get('http://localhost:4004/profile');
+
+  // If the request was successful, update the user's profile information on the page
+  if (res.status === 200) {
+    const user = res.data;
+    document.getElementById('firstName').innerHTML = user.name;
+    document.getElementById('floatingInput').innerHTML = user.email;
+  }
+}
+
+// Call the getUserProfile function when the page loads
+window.onload = getUserProfile();
 
 function getAllComments(){
   axios.get('http://localhost:4004/allComments')
@@ -74,8 +89,8 @@ function getAllComments(){
           
           const info=`<h1></h1>
           <div class="comments-card">
-         <h3>Your comment is here...</h3>
-         <p>Name: ${comments.firstname}</p>
+          <h3>Welcome ${comments.firstname}! here is your ratings</h3>
+        
         <p>President's Name: ${comments.name}</p>
         <p>Comment: ${comments.comment}</p>
         <p>Rating: ${comments.rating}</p>
@@ -89,6 +104,7 @@ function getAllComments(){
       })
   })
 }
+
 
 
 function createPresidentDropDown(){
@@ -106,6 +122,8 @@ function createPresidentDropDown(){
         })
       })
 }
+
+
 
 function deleteComments(id) {
   axios.delete(`http://localhost:4004/allComments/${id}`)
@@ -132,7 +150,8 @@ function handleSubmit(e) {
       presidentsId : nameInput.value, 
       userName: userName.value,
       rating: +userRating, 
-      comment: presidentComment.value
+      comment: presidentComment.value,
+      vote_users: userComments.value
       
   }
 
@@ -162,6 +181,7 @@ function handleSubmit(e) {
   
 }
 
+// displayProfile();
 getAllComments()
 createPresidentDropDown()
 getPresidentsSecond()

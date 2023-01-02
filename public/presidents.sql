@@ -23,9 +23,12 @@
 
       create table vote_users(
         vote_user_id serial primary key,
+        firstname varchar DEFAULT '',
+       lastname varchar DEFAULT '';
         email varchar not null,
         passhash varchar(500) not null 
     );
+SELECT c.*, u.* FROM comments c LEFT JOIN vote_users u ON c.vote_user_id = u.vote_user_id;
 
     SELECT ratings.*, presidents.name
     FROM ratings
@@ -37,7 +40,7 @@ CREATE TABLE comments(
        presidentsId INTEGER REFERENCES presidents(id),
        comment TEXT NOT NULL,
        rating INTEGER 
-       
+       vote_user_id INTEGER REFERENCES vote_users(vote_user_id) NOT NULL
 );
 
 

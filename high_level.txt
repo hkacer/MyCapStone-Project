@@ -1,0 +1,187 @@
+                +-------------------+                +-------------------+
+                |                   |                |                   |
+                |   Web Client      |                |   Web Server      |
+                |                   |                |                   |
+                +--------+----------+                +--------+----------+
+                         |                                  |
+                         | HTTP requests                      | HTTP responses
+                         |                                  |
+                +--------+----------+                +--------+----------+
+                |                   |                |                   |
+                |   Rating Form     |                |   Rating Form     |
+                |   and Comment     |                |   and Comment     |
+                |   Submission      |                |   Submission      |
+                |                   |                |                   |
+                +--------+----------+                +--------+----------+
+                         |                                  |
+                         | Form data                         | Form data
+                         |                                  |
+                +--------+----------+                +--------+----------+
+                |                   |                |                   |
+                |   JWT Token       |                |   JWT Token       |
+                |   Library         |                |   Library         |
+                |                   |                |                   |
+                +--------+----------+                +-------------------+
+                         |                                  |
+                         | Token                             | Token
+                         |                                  |
+                +--------+----------+                +-------------------+
+                |                   |                |                   |
+                |   Bcrypt          |                |   Bcrypt          |
+                |   Library         |                |   Library         |
+                |                   |                |                   |
+                +--------+----------+                +-------------------+
+                         |                                  |
+                         | Hashed                            | Hashed
+                         | Password                         | Password
+                         |                                  |
+                +--------+----------+                +-------------------+
+                |                   |                |                   |
+                |   Database        |                |   Database        |
+                |   Access Layer    |                |   Access Layer    |
+                |                   |                |                   |
+                +-------------------+                +-------------------+
+ In this diagram, the web client is the top layer and consists of the HTML, CSS, and JavaScript files that are served to the user's web browser. The web client includes a rating form and comment submission form, which allow users to rate and comment on the presidents.
+
+When a user submits the form, the web client sends an HTTP request to the web server, which is the middle layer of the architecture. The web server processes the request and uses the database access layer to store the rating and comment in the database. The web server then sends an HTTP response back to the web client, which updates the list of comments for that president to include the user's comment.
+
+the JWT token library and the Bcrypt library are additional dependencies that are used by both the web client and the web server. The JWT token library is used to handle authentication by generating and verifying tokens for logged-in users. The Bcrypt library is used to hash and compare passwords for secure password storage.
+
+The database is the bottom layer of the architecture and stores all of the data for the application, including the ratings and comments for each president. The database is accessed via a database access layer, which can be an ORM library or other database access mechanism.
+
+          
+               
+          Start by introducing the purpose of the website, which is to allow users to rate and comment on past presidents.
+Show the main page of the website, which should display a list of past presidents.
+Click on one of the presidents to go to their individual page, which should show their name, a brief description, and an option to rate and comment on them.
+Click on the "Rate and Comment" button to go to the form where users can leave their rating and comment.
+Fill out the form and submit it to add the user's rating and comment to the website.
+Show the list of comments for that president, which should now include the user's comment.
+Explain that users can also view and delete their own comments by logging in with their email and password.
+Demonstrate the login process by clicking on the "Log in" button and entering the login credentials.
+Once logged in, show the user's profile page, which should display their email address and any comments they have made.
+Click on one of the user's comments to go to the page for that president, which should now include an option to delete the comment.
+Click on the "Delete" button to remove the comment from the website.
+Conclude the demo by summarizing the key features of the website and thanking the audience for their attention.     
+               
+               
+                +-------------------+                +-------------------+
+                |                   |                |                   |
+                |   Web Client      |                |   Web Server      |
+                |                   |                |                   |
+                +--------+----------+                +--------+----------+
+                         |                                  |
+                         | HTTP requests                      | HTTP responses
+                         |                                  |
+                +--------+----------+                +--------+----------+
+                |                   |                |                   |
+                |   Rating Form     |                |   Rating Form     |
+                |   and Comment     |                |   and Comment     |
+                |   Submission      |                |   Submission      |
+                |                   |                |                   |
+                +--------+----------+                +--------+----------+
+                         |                                  |
+                         | Form data                         | Form data
+                         |                                  |
+                +--------+----------+                +--------+----------+
+                |                   |                |                   |
+                |   Database        |                |   Database        |
+                |   Access Layer    |                |   Access Layer    |
+                |                   |                |                   |
+                +-------------------+                +-------------------+
+
+
+           
+           
+                                      +------------+
+                                      |            |                                                                       +------------+
+                                      |            |
+                                      |  index.html|
+                                      |  style.css |
+                                      |  app.js    |
+                                      +------------+
+                                             |
+                                             | HTTP requests
+                                             |
+                                      +------------+
+                                      |            |
+                                      |  server.js |
+                                      |  routes/   |
+                                      |  controllers/|
+                                      |  models/    |
+                                      +------------+
+                                             |
+                                             | API calls
+                                             |
+                                      +------------+
+                                      |            |
+                                      |  MySQL     |
+                                      |  Database  |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  jsonwebtoken|
+                                      |  Library   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  bcryptjs  |
+                                      |  Library   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  axios     |
+                                      |  Library   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  Sequelize |
+                                      |  ORM       |
+                                      |            |
+
+
+
+
+                                      +------------+
+                                      |  Web       |
+                                      |  Client    |
+                                      |            |
+                                      +------------+
+                                             |
+                                             | HTTP requests
+                                             |
+                                      +------------+
+                                      |            |
+                                      |  Web       |
+                                      |  Server    |
+                                      |            |
+                                      +------------+
+                                             |
+                                             | API calls
+                                             |
+                                      +------------+
+                                      |            |
+                                      |  Database  |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  JWT       |
+                                      |  Token     |
+                                      |  Service   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  Bcrypt    |
+                                      |  Service   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  Axios     |
+                                      |  Library   |
+                                      |            |
+                                      +------------+
+                                      |            |
+                                      |  Seqelize  |
+                                      |  ORM       |
+                                      |            |
+                                      +------------+

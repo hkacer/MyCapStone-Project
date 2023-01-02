@@ -36,10 +36,27 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
         FOREIGN KEY (president_id) REFERENCES presidents(id)
       );
 
+
+      SELECT c.firstName, c.lastName, c.comment, c.rating, vu.email
+        FROM comments c
+        INNER JOIN vote_users vu ON c.vote_user_id = vu.vote_user_id;
+
+
+      CREATE TABLE comments(
+        commentsId SERIAL PRIMARY KEY,
+        firstName VARCHAR(20) NOT NULL,
+        presidentsId INTEGER REFERENCES presidents(id),
+        comment TEXT NOT NULL,
+        rating INTEGER,
+        vote_user_id INTEGER REFERENCES vote_users(vote_user_id) NOT NULL
+ );
+ 
       create table vote_users(
         vote_user_id serial primary key,
         email varchar not null,
         passhash varchar(500) not null 
+        firstname varchar,
+      lastname varchar
     );
 
     SELECT ratings.*, presidents.name

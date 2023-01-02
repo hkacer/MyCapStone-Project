@@ -3,8 +3,6 @@ const {CONNECTION_STRING}= process.env;
 const Sequelize=require('sequelize');
 
 
-
-
 const sequelize = new Sequelize(CONNECTION_STRING, {
   dialect: 'postgres', 
   dialectOptions: {
@@ -80,14 +78,14 @@ deleteComments:(req,res)=>{
   .catch(err=>console.log('Err is here delete'))
 },
 
-createPresidents:(req,res)=>{
-  const {name,rating,id}=req.body
-  sequelize.query(`
-  INSERT INTO presidents (name, rating, id)
-  VALUES ('${name}', ${rating}, ${id})
-  `).then(dbRes=>res.status(200).send(dbRes[0]))
-  .catch(err=>console.log('Err is here second'))
+getUserProfile:(req,res)=>{
+const userProfile=req.params.id;
+const {userName,rating,comment}=req.body;
+sequelize.query(`SELECT * FROM comments WHERE vote_user_id = [vote_user_id]`)
+.then(dbRes=>res.status(200).send(dbRes[0]))
+  .catch(err=>console.log('Err is here pofile',err))
 },
+
 
 createPresidentComment:(req,res)=>{
   const presidentId=req.params.id
@@ -98,6 +96,16 @@ createPresidentComment:(req,res)=>{
   `)
   .then(dbRes=>res.status(200).send(dbRes[0]))
   .catch(err=>console.log('Err is here third',err))
-  console.log(presidentId,userName,rating,comment)
+  //console.log(presidentId,userName,rating,comment)
 }
 }
+
+
+// createPresidents:(req,res)=>{
+//   const {name,rating,id}=req.body
+//   sequelize.query(`
+//   INSERT INTO presidents (name, rating, id)
+//   VALUES ('${name}', ${rating}, ${id})
+//   `).then(dbRes=>res.status(200).send(dbRes[0]))
+//   .catch(err=>console.log('Err is here second'))
+// }

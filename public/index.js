@@ -45,6 +45,7 @@ const login = (body) =>
       let token = res.data.token;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.vote_user_id);
+      sessionStorage.setItem("firstname", res.data.firstname);
       window.location.href = "Rating.html";
     })
     .catch((err) => console.log("second err"));

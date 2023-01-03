@@ -44,7 +44,7 @@
             id="title"
             placeholder="Who is your favorite President?"/> -->
             <label for="user-name">Your Name</label>
-            <input type="text" id="user-name">
+            <input type="text" id="user-name" disabled>
             <label id="name-input" for="presidents-name">Select the name of President </label>
             <select id="presidents-name" name="presidents-name" ></select>
         <input 
@@ -73,8 +73,11 @@
           
       </form>
       <!-- <p>Comments</p> -->
-      <div id="see-all-comments"></div>
-      <div id="profile"></div>
+      <div id="see-all-comments">
+        <section id="comments-container">All Comments...</section>
+        <!-- <button id="allComments">See All Comments</button> -->
+      </div>
+      <div id="user-comments"></div>
    
 
     </aside>

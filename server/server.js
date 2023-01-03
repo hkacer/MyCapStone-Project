@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 
 
-const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments,getUserProfile}=require('./controllerSecond.js')
+const {getPresidentsSecond,deleteComments,createPresidentComment,getAllComments,getUserComments}=require('./controllerSecond.js')
 // const { getPresidents} = require('./controller.js')
 
 app.use(express.static('public'))
@@ -27,7 +27,7 @@ app.post('/api/list/:id',isAuthenticated)
 app.get('/api/list/:id', isAuthenticated)
 //app.post('/seed', seed)
 app.get('/allComments',getAllComments)
-app.get('/profile',getUserProfile )
+app.get('/userComments/:id',getUserComments )
 // app.get('/presidents', getPresidents)
 app.get('/presidentsSecond',getPresidentsSecond)
 //app.get('/presidentsSecond',createPresidentDropDown)

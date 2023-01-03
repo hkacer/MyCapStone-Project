@@ -242,6 +242,17 @@ aside{
 #see-all-comments{
   display: flex;
 
+  width: 250px;
+  flex-shrink: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  
+}
+#user-comments{
+  display: flex;
+
   width: 200px;
   flex-shrink: 1;
   display: flex;

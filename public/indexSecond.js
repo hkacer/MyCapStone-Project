@@ -1,55 +1,50 @@
+if (sessionStorage.getItem("userId") !== null) {
+  getUserComments();
+  console.log("hit userComments");
+} else {
+  getAllComments();
+  console.log("hit AllComments");
+}
 
-const form = document.querySelector('form')
-const seAll=document.getElementById('see-all')
-const nameInput = document.querySelector('#presidents-name')
-const presidentComment=document.getElementById('president-comment')
-const seePres=document.getElementById('all-pres')
-const presContainer = document.querySelector('#pres-container')
-const userName= document.getElementById('user-name')
-const seeAllComments=document.getElementById('see-all-comments')
-const userComments=document.getElementById('profile')
+const form = document.querySelector("form");
+const seAll = document.getElementById("see-all");
+const nameInput = document.querySelector("#presidents-name");
+const presidentComment = document.getElementById("president-comment");
+const seePres = document.getElementById("all-pres");
+const presContainer = document.querySelector("#pres-container");
+const userName = document.getElementById("user-name");
+const seeAllComments = document.getElementById("see-all-comments");
+const userComments = document.getElementById("user-comments");
+const allComments=document.getElementById('allComments')
 
 
-
-// Get the modal
 var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
 var btn = document.getElementById("modalButton");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
-}
+};
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+};
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
+userName.setAttribute('value', sessionStorage.getItem('firstname'))
 
 
 function getPresidentsSecond() {
-  
+  axios.get("http://localhost:4004/presidentsSecond").then((res) => {
+    res.data.forEach((presidents) => {
+      const secondPres = document.createElement("option");
+      secondPres.setAttribute("value", presidents["id"]);
+      //console.log(presidents)
 
-  axios.get('http://localhost:4004/presidentsSecond')
-      .then(res => {
-          res.data.forEach(presidents => {
-              const secondPres = document.createElement('option')
-              secondPres.setAttribute('value', presidents['id'])
-              //console.log(presidents)
-              
-              const info=`<h1></h1>
+      const info = `<h1></h1>
               <div class="president-card">
              <h3>${presidents.name}</h3>
              <img src="${presidents.image_url}" alt="president's picture">
@@ -58,132 +53,178 @@ function getPresidentsSecond() {
             <p>Rating: ${presidents.rating}</p>
            
            </div>
-          `
-              seePres.innerHTML+=info
-              
-          })
-      })
-}
-async function getUserProfile() {
-  // Send a request to the server to get the user's profile information
-  const res = await axios.get('http://localhost:4004/profile');
-
-  // If the request was successful, update the user's profile information on the page
-  if (res.status === 200) {
-    const user = res.data;
-    document.getElementById('firstName').innerHTML = user.name;
-    document.getElementById('floatingInput').innerHTML = user.email;
-  }
+          `;
+      seePres.innerHTML += info;
+    });
+  });
 }
 
-// Call the getUserProfile function when the page loads
-window.onload = getUserProfile();
 
-function getAllComments(){
-  axios.get('http://localhost:4004/allComments')
-  .then(res => {
-      res.data.forEach(comments => {
-          const allComments = document.createElement('option')
-          allComments.setAttribute('value', comments['id'])
-          //console.log(presidents)
-          
-          const info=`<h1></h1>
-          <div class="comments-card">
-          <h3>Welcome ${comments.firstname}! here is your ratings</h3>
+
+
+function seeCard(arr) {
+  
+  arr.forEach((comments) => {
+    const allComments = document.createElement("option");
+    allComments.setAttribute("value", comments["id"]);
+    //console.log(presidents)
+
+    const info = `<h1></h1>
+    <div class="comments-card">
+    <h3>${comments.firstname} here is your ratings</h3>
+  <p>President's Name: ${comments.name}</p>
+  <p>Comment: ${comments.comment}</p>
+  <p>Rating: ${comments.rating}</p>
+ </div>
+ <button onclick="deleteComments(${comments.commentsid})">Delete</button>
+ 
+`
+
+seeAllComments.innerHTML += info;
+
+  });
+  seeAllComments.innerHTML += `<button onclick="getAllComments()" "window.location.href='allComments.html'">See All Comments</button>`;
+
+}
+
+
+
+
+
+function getUserComments() {
+  const userId = sessionStorage.getItem("userId");
+console.log('getUserComments')
+  axios.get(`http://localhost:4004/userComments/${userId}`).then((res) => {
+    if (res.status === 200) {
+      const userComments = res.data;
+      seeCard(userComments);
+      
+    }
+    
+  });
+}
+
+
+
+function getAllComments() {
+  console.log('getUserCommentsall')
+
+  axios.get("http://localhost:4004/allComments").then((res) => {
+    //seeCard(res.data);
+    const container = document.getElementById('comments-container');
+      const comments = res.data;
+
+      // Display the comments on the page
+      comments.forEach((comments) => {
         
-        <p>President's Name: ${comments.name}</p>
-        <p>Comment: ${comments.comment}</p>
-        <p>Rating: ${comments.rating}</p>
-       </div>
-       <button onclick="deleteComments(${comments.commentsid})">Delete</button>
-      `
-   
-      seeAllComments.innerHTML+=info
+        const info = `
+          <div class="comments-card">
+            <h3>${comments.firstname}'s rating</h3>
+            <p>President's Name: ${comments.name}</p>
+            <p>Comment: ${comments.comment}</p>
+            <p>Rating: ${comments.rating}</p>
+          </div>
+        `
+        container.innerHTML += info;
+      });
+    });
 
-          
-      })
-  })
+  //   arr.forEach((comments) => {
+  //     const allComments = document.createElement("option");
+  //     allComments.setAttribute("value", comments["id"]);
+  //     //console.log(presidents)
+  
+  //     const info = `<h1></h1>
+  //     <div class="comments-card">
+  //     <h3>${comments.firstname}'s ratings</h3>
+  //   <p>President's Name: ${comments.name}</p>
+  //   <p>Comment: ${comments.comment}</p>
+  //   <p>Rating: ${comments.rating}</p>
+  //  </div>
+  // `
+  
+  // seeAllComments.innerHTML += info;
+  //   });
+//
+  
 }
+window.onload = getAllComments;
 
 
-
-function createPresidentDropDown(){
-
-  const selectTag=document.getElementById('presidents-name')
-  axios.get('http://localhost:4004/presidentsSecond')
-      .then(res => {
-        res.data.forEach(presidents => {
-          const secondPres = document.createElement('option')
-          secondPres.setAttribute('value', presidents['id'])
-          secondPres.textContent =presidents.name
-          selectTag.appendChild(secondPres)
-          
-
-        })
-      })
+function createPresidentDropDown() {
+  const selectTag = document.getElementById("presidents-name");
+  axios.get("http://localhost:4004/presidentsSecond").then((res) => {
+    res.data.forEach((presidents) => {
+      const secondPres = document.createElement("option");
+      secondPres.setAttribute("value", presidents["id"]);
+      secondPres.textContent = presidents.name;
+      selectTag.appendChild(secondPres);
+    });
+  });
 }
 
 
 
 function deleteComments(id) {
-  axios.delete(`http://localhost:4004/allComments/${id}`)
-      .then(() => getAllComments())
-      
-      .catch(err => console.log('err here delete'))
+  axios
+    .delete(`http://localhost:4004/allComments/${id}`)
+    .then(() => getAllComments())
 
-      window.location.href = 'Rating.html'
+    .catch((err) => console.log("err here delete"));
+
+  window.location.href = "Rating.html";
 }
+
 
 
 
 function handleSubmit(e) {
-  e.preventDefault()
+  e.preventDefault();
 
-  if (presidentComment.value.length <=0 || userName.value.length<=0) {
+  if (presidentComment.value.length <= 0 || userName.value.length <= 0) {
+    alert("Please fill out the required field");
+  } else {
+    let userRating = document.querySelector(
+      'input[name="rating"]:checked'
+    ).value;
     
-      alert ('Please fill out the required field')
     
-  }else {
-    let userRating = document.querySelector('input[name="rating"]:checked').value
-   
-  let body = {
-      presidentsId : nameInput.value, 
+    let body = {
+      presidentsId: nameInput.value,
       userName: userName.value,
-      rating: +userRating, 
+      rating: +userRating,
       comment: presidentComment.value,
-      vote_users: userComments.value
-      
-  }
+      vote_user_id: sessionStorage.getItem("userId"),
+    };
 
-  axios.post(`http://localhost:4004/presidents/${nameInput.value}/comments`, body)
+    axios
+      .post(
+        `http://localhost:4004/presidents/${nameInput.value}/comments`,body)
       .then((res) => {
-          nameInput.value = ''
-          document.querySelector('#rating-one').checked = true
-          //getPresidentsSecond()
-          if(res.status==200){
-            alert('Your comment is saved!')
-          }else{
-            alert('There was a problem try again later!!!')
-          }
+        nameInput.value = "";
+        document.querySelector("#rating-one").checked = true;
+        //getPresidentsSecond()
+        if (res.status == 200) {
+          alert("Your comment is saved!");
+        } else {
+          alert("There was a problem try again later!!!");
+        }
 
-          const commentElement = document.createElement('div');
+        const commentElement = document.createElement("div");
         commentElement.innerText = presidentComment.value;
         document.body.appendChild(commentElement);
-          presidentComment.innerHTML+= commentElement
-          console.log(commentElement)
-        window.location.href = 'Rating.html';
+        presidentComment.innerHTML += commentElement;
+        console.log(commentElement);
+        window.location.href = "Rating.html";
       });
-          
-      
-
   }
- 
-  
 }
 
-// displayProfile();
-getAllComments()
-createPresidentDropDown()
-getPresidentsSecond()
 
-form.addEventListener('submit', handleSubmit)
+
+
+
+createPresidentDropDown();
+getPresidentsSecond();
+
+form.addEventListener("submit", handleSubmit);

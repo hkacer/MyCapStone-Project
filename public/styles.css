@@ -127,22 +127,28 @@ input[type='text'] {
   border-top-right-radius: 15px;
 }
 #see-all-comments{
-  width: 100px;
+  width: 500px;
   height:390px;
 overflow-x: hidden;
 margin-right: 50px;
 border-radius: 20px;
 padding: 10px;
 margin-top: 50px;
-display: flex;
-  flex-direction: row;
+/* display: flex; */
+  /* flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color:rgb(247, 188, 242);
+  /* ;
   flex-grow: 2;
-  
+   */ 
+   background-color:rgb(247, 188, 242);
 
-
+}
+.allCom{
+ 
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .comments-card{
   display: flex;
@@ -238,17 +244,6 @@ aside{
 
 
  
-}
-#see-all-comments{
-  display: flex;
-
-  width: 250px;
-  flex-shrink: 1;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  
 }
 #user-comments{
   display: flex;

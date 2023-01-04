@@ -1,4 +1,7 @@
 if (sessionStorage.getItem("userId") !== null) {
+  const userName = document.getElementById("user-name");
+  console.log(sessionStorage.getItem('firstname'))
+  userName.setAttribute('value', sessionStorage.getItem('firstname'))
   getUserComments();
   console.log("hit userComments");
 } else {
@@ -12,7 +15,7 @@ const nameInput = document.querySelector("#presidents-name");
 const presidentComment = document.getElementById("president-comment");
 const seePres = document.getElementById("all-pres");
 const presContainer = document.querySelector("#pres-container");
-const userName = document.getElementById("user-name");
+
 const seeAllComments = document.getElementById("see-all-comments");
 const userComments = document.getElementById("user-comments");
 const allComments=document.getElementById('allComments')
@@ -34,7 +37,7 @@ window.onclick = function (event) {
   }
 };
 
-userName.setAttribute('value', sessionStorage.getItem('firstname'))
+
 
 
 function getPresidentsSecond() {
@@ -83,7 +86,7 @@ function seeCard(arr) {
 seeAllComments.innerHTML += info;
 
   });
-  seeAllComments.innerHTML += `<button onclick="getAllComments()" "window.location.href='allComments.html'">See All Comments</button>`;
+  seeAllComments.innerHTML += `<button  class="allCom" onclick="getAllComments()">See All Comments</button>`;
 
 }
 
@@ -107,8 +110,9 @@ console.log('getUserComments')
 
 
 function getAllComments() {
-  console.log('getUserCommentsall')
-
+  
+//location.href="./allComments.html"
+console.log('getUserCommentsall')
   axios.get("http://localhost:4004/allComments").then((res) => {
     //seeCard(res.data);
     const container = document.getElementById('comments-container');
@@ -148,7 +152,7 @@ function getAllComments() {
 //
   
 }
-window.onload = getAllComments;
+//window.onload = getAllComments;
 
 
 function createPresidentDropDown() {

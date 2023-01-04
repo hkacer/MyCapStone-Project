@@ -46,6 +46,7 @@ const login = (body) =>
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.vote_user_id);
       sessionStorage.setItem("firstname", res.data.firstname);
+      console.log(sessionStorage.getItem('firstname'))
       window.location.href = "Rating.html";
     })
     .catch((err) => console.log("second err"));
@@ -59,6 +60,7 @@ const signUp = (body) =>
       console.log(res.data);
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.vote_user_id);
+      sessionStorage.setItem("firstname", res.data.firstname);
      window.location.href = "Rating.html";
     })
     .catch((err) => console.log("third err"));
